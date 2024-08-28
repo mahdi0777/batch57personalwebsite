@@ -3,3 +3,9 @@ untuk nambah jarak "padding:
 git remote add origin https://github.com/mahdi0777/batch57personalwebsite.git
 git branch -M main
 git push -u origin main
+
+
+ssh
+git remote add origin git@github.com:mahdi0777/batch57personalwebsite.git
+git branch -M main
+git push -u origin main
