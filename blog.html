@@ -51,24 +51,43 @@
       <label class="label-style" for="projectName">Project Name</label>
       <input class="input-style" type="projectName">
 
-      <div class="flex">
-      <label class="label-style"for="startDate">Start Date</label>
-      <input type="startDate">
-    <label class="label-style" for="endDate">End Date</label>
-      <input type="endDate">
-    </div>
+      <label class="label-style" for="start-date">Start Date</label>
+      <input class="input-style" type="date" id="start-date" name="start-date">
+
+      <label class="label-style" for="end-date">End Date</label>
+      <input class="input-style" type="date" id="end-date" name="end-date">
+
       <label class="label-style" for="description">Description</label>
-      <textarea class="input-style" name="description" id="description"></textarea>
-      <label class="label-style" for="technologies">Technologies</label>
-    <div class="flex-check">
-      <input type="checkbox">Node Js
-      <input type="checkbox">React Js
-    </div>
-    <div class="flex-check">
-      <input type="checkbox">Next Js
-      <input type="checkbox">TypeScript
-    </div>
+      <textarea class="input-style" id="description" name="description" placeholder="Enter project description"></textarea>
     
+      <label class="label-style" for="technologies">Technologies</label>
+      <div class="">
+          <input class="checkbox" type="checkbox" id="nodejs" name="technologies" value="Node Js">
+          <label class="checkbox"for="nodejs">Node Js</label>
+          <input class="checkbox"type="checkbox" id="nextjs" name="technologies" value="Next Js">
+          <label class="checkbox"for="nextjs">Next Js</label>
+        </div>
+          <div>
+          <input class="checkbox"type="checkbox" id="reactjs" name="technologies" value="React Js">
+          <label class="checkbox"for="reactjs">React Js</label>
+          <input class="checkbox"type="checkbox" id="typescript" name="technologies" value="TypeScript">
+          <label class="checkbox"for="typescript">TypeScript</label>
+
+          <div>
+            <label class="label-style">Upload Image</label>
+              <label for="input-blog-image">
+                <p>Attach File</p>
+                <i class="fa-solid fa-file"></i>
+              </label>
+              <input type="file" id="input-blog-image" hidden />
+            </div>
+          </div>
+          <div class="button-group">
+            <input type="submit" class="SubmitButtonClass" style="border:none;" value="Submit" />
+          </div>
+        </div>
+      </form>
+      </div>
     </form>
   </div>
 </body>
