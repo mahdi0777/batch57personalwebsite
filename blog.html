@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./assets/logo/css/style.css">
     <style>
         *, body {
             margin: 0;
@@ -42,6 +43,33 @@
             >
           </li>
         </ul>
-      </nav>
+    </nav>
+      <h1 style="display: flex; justify-content: center; padding: 30px; margin-top: 40px;">ADD MY PROJECT</h1>
+      <div style="display: flex; width: 100%; justify-content: center; margin-top: 20px;">
+      
+      <form class="form" action="">
+      <label class="label-style" for="projectName">Project Name</label>
+      <input class="input-style" type="projectName">
+
+      <div class="flex">
+      <label class="label-style"for="startDate">Start Date</label>
+      <input type="startDate">
+    <label class="label-style" for="endDate">End Date</label>
+      <input type="endDate">
+    </div>
+      <label class="label-style" for="description">Description</label>
+      <textarea class="input-style" name="description" id="description"></textarea>
+      <label class="label-style" for="technologies">Technologies</label>
+    <div class="flex-check">
+      <input type="checkbox">Node Js
+      <input type="checkbox">React Js
+    </div>
+    <div class="flex-check">
+      <input type="checkbox">Next Js
+      <input type="checkbox">TypeScript
+    </div>
+    
+    </form>
+  </div>
 </body>
 </html>
