@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/logo/css/style.css">
+    <link rel="stylesheet" href="./assets/logo/css/nav.css">
+    <link rel="stylesheet" href="./assets/logo/css/blog.css">
     <style>
         *, body {
             margin: 0;
@@ -14,81 +16,75 @@
 <body>
     <nav>
         <ul
-          style="
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            align-items: center;
-            background-color: black;
-            padding: 10px;
-          "
+          class="nav-container"
         >
           <li>
             <img src="./assets/logo/—Pngtree—cool red wings logo_7129340.png"
-            style=" width: 85px; height: 85px; object-fit: contain;""
+            class="nav-logo"
             />
           </li>
-          <li><a href="index.html" style="color: white; text-decoration: none">Home</a></li>
-          <li><a href="blog.html" style="color: white; text-decoration: none;">Blog </a></li>
-          <li style="display: flex; width: 100% ; justify-content: flex-end;">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="blog.html" class="nav-link">Blog </a></li>
+          <li class="nav-right">
             <a
               href="contact.html"
-              style="
-                background-color: red;
-                padding: 20px;
-                border-radius: 10px;
-                color: white; text-decoration: none;"
+              class="nav-contact-button"
               >Contact Me</a
             >
           </li>
         </ul>
     </nav>
-      <h1 style="display: flex; justify-content: center; padding: 30px; margin-top: 40px;">ADD MY PROJECT</h1>
-      <div style="display: flex; width: 100%; justify-content: center; margin-top: 20px;">
-      
-      <form class="form" action="">
-      <label class="label-style" for="projectName">Project Name</label>
-      <input class="input-style" type="projectName">
-
-      <label class="label-style" for="start-date">Start Date</label>
-      <input class="input-style" type="date" id="start-date" name="start-date">
-
-      <label class="label-style" for="end-date">End Date</label>
-      <input class="input-style" type="date" id="end-date" name="end-date">
-
-      <label class="label-style" for="description">Description</label>
-      <textarea class="input-style" id="description" name="description" placeholder="Enter project description"></textarea>
-    
-      <label class="label-style" for="technologies">Technologies</label>
-      <div class="">
-          <input class="checkbox" type="checkbox" id="nodejs" name="technologies" value="Node Js">
-          <label class="checkbox"for="nodejs">Node Js</label>
-          <input class="checkbox"type="checkbox" id="nextjs" name="technologies" value="Next Js">
-          <label class="checkbox"for="nextjs">Next Js</label>
-        </div>
-          <div>
-          <input class="checkbox"type="checkbox" id="reactjs" name="technologies" value="React Js">
-          <label class="checkbox"for="reactjs">React Js</label>
-          <input class="checkbox"type="checkbox" id="typescript" name="technologies" value="TypeScript">
-          <label class="checkbox"for="typescript">TypeScript</label>
-
-          <div>
-            <label class="label-style">Upload Image</label>
-              <label for="input-blog-image">
-                <p>Attach File</p>
-                <i class="fa-solid fa-file"></i>
-              </label>
-              <input type="file" id="input-blog-image" hidden />
+    <div class="blog">
+      <div class="blog-form">
+        <div class="form-container">
+          <form onsubmit="addBlog(event)">
+            <h1>Add My Project</h1>
+            <div>
+              <label for="input-blog-project">Project Name</label>
+              <input id="input-blog-project" />
             </div>
-          </div>
-          <div class="button-group">
-            <input type="submit" class="SubmitButtonClass" style="border:none;" value="Submit" />
-          </div>
+            <div>
+              <label for="startDate">Start Date</label>
+              <input type="date" id="startDate">
+            </div>
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate">
+            <div>
+              <label for="input-blog-content">Description</label>
+              <textarea id="input-blog-description"></textarea>
+            </div>
+            <div>
+              <label for="technologies">Technologies</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="technologies" name="technologies" value="Node Js"> Node Js</label>
+            <label><input type="checkbox" id="technologies" name="technologies" value="React Js"> React Js</label>
+            <label><input type="checkbox" id="technologies" name="technologies" value="Next Js"> Next Js</label>
+            <label><input type="checkbox" id="technologies" value="TypeScript"> TypeScript</label>
         </div>
-      </form>
+            </div>
+            <div>
+              <label>Upload Image</label>
+              <div class="input-blog-image-group">
+                <label for="input-blog-image">
+                  <p>Attach File</p>
+                  <i class="fa-solid fa-file"></i>
+                </label>
+                <input type="file" id="input-blog-image" hidden />
+              </div>
+            </div>
+            <div class="button-group">
+              <button>Post Blog</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
-  </div>
-</body>
+
+      <hr class="line" />
+      <div id="contents" class="blog-list">
+      </div>
+    </div>
+    <script src="./assets/logo/js/blog.js"></script>
+  </body>
 </html>
+
+<script src="https://kit.fontawesome.com/a8706e08fa.js" crossorigin="anonymous"></script>
