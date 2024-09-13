@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+    <style>
+      *,
+      body {
+        margin: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="./assets/logo/css/style.css">
+    <link rel="stylesheet" href="./assets/logo/css/nav.css">
+  </head>
+  <body>
+    <!-- <div
+      style="
+        display: flex;
+        background-color: blue;
+        justify-content: center;
+        gap: 10px;
+      "
+    >
+      <div style="background-color: red; padding: 10px">1</div>
+      <div style="background-color: red; padding: 10px">2</div>
+      <div style="background-color: red; padding: 10px">3</div>
+    </div> -->
+    <nav>
+      <ul
+        class="nav-container"
+      >
+        <li>
+          <img src="./assets/logo/—Pngtree—cool red wings logo_7129340.png"
+          class="nav-logo"
+          />
+        </li>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/blog" class="nav-link"">Blog </a></li>
+        <li><a href="/testimonial" class="nav-link"> Testimonial</a></li>
+        <li class="nav-right">
+          <a
+            href="/contact"
+            class="nav-contact-button"
+            >Contact Me</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div  style="
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+  ">
+    <form class="form" onsubmit="submitData(event)">
+      <label class="label-style" for="name">Name</label>
+      <input class="input-style" id="name" placeholder="Input your Name"/>
+      <label class="label-style" for="email">Email</label>
+      <input class="input-style" id="email" placeholder="Input your Email"/>
+      <label class="label-style" for="phoneNumber">Phone Number</label>
+      <input class="input-style" id="phoneNumber" placeholder="Input your Phone Number"/>
+      <label class="label-style" for="subject">Subject</label>
+      <select class="input-style" id="subject">
+        <option hidden>Select Position</option>
+        <option>Backend Developer</option>
+        <option>Frontend Developer</option>
+        <option>Fullstack Developer</option>
+      </select>
+      <label class="label-style" for="massage">Your Massage</label>
+      <textarea class="input-style" id="massage" cols="40" rows="4" placeholder="Input your Massage"></textarea>
+      <input class="btn-style" type="submit" value="Submit" />
+    </form>
+  </div>
+    <script src="./assets/logo/js/contact.js"></script>
+  </body>
+</html>
