@@ -55,13 +55,16 @@
               <textarea id="input-blog-description"></textarea>
             </div>
             <div>
-              <label for="technologies">Technologies</label>
-        <div class="checkbox-group">
-            <label><input type="checkbox" id="technologies" name="technologies" value="Node Js"> Node Js</label>
-            <label><input type="checkbox" id="technologies" name="technologies" value="React Js"> React Js</label>
-            <label><input type="checkbox" id="technologies" name="technologies" value="Next Js"> Next Js</label>
-            <label><input type="checkbox" id="technologies" value="TypeScript"> TypeScript</label>
-        </div>
+              <h3>Technologies</h3>
+              <input type="checkbox" id="nodejs" name="technologies" value="Node Js">
+              <label for="nodejs"> Node Js</label><br>
+              <input type="checkbox" id="reactjs" name="technologies" value="React Js">
+              <label for="reactjs"> React Js</label><br>
+              <input type="checkbox" id="nextjs" name="technologies" value="Next Js">
+              <label for="nextjs"> Next Js</label><br>
+              <input type="checkbox" id="typescript" name="technologies" value="TypeScript">
+              <label for="typescript"> TypeScript</label><br><br>
+        
             </div>
             <div>
               <label>Upload Image</label>
@@ -79,7 +82,13 @@
           </form>
         </div>
       </div>
+
+      <hr class="line" />
+      <div id="contents" class="blog-list">
+      </div>
+    </div>
     <script src="./assets/logo/js/blog.js"></script>
   </body>
 </html>
 
+<script src="https://kit.fontawesome.com/a8706e08fa.js" crossorigin="anonymous"></script>

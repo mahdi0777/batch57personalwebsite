@@ -5,30 +5,40 @@ function addBlog(e) {
 
   const title = document.getElementById("input-blog-project").value; 
   const description = document.getElementById("input-blog-description").value;
-  const startDate = document.getElementById("startDate").value
-  const technologies= document.getElementById("technologies").value
-  const endDate = document.getElementById("endDate").value
-  let image = document.getElementById("input-blog-image").files; 
+  const startDate = document.getElementById("startDate").value;
+  const endDate = document.getElementById("endDate").value;
+  let image = document.getElementById("input-blog-image").files;
 
-  image = URL.createObjectURL(image[0]);
+  
+  const checkboxes = document.querySelectorAll('input[name="technologies"]:checked');
+  let technologies = [];
+
+  checkboxes.forEach((checkbox) => {
+    technologies.push(checkbox.value);
+  });
+
+  
+  if (image.length > 0) {
+    image = URL.createObjectURL(image[0]);
+  }
 
   const createdAt = new Date();
 
   const blog = {
     title,
     description,
-    technologies,
+    technologies: technologies.join(", "),
     startDate,
     endDate,
     image,
     createdAt,
   };
 
-  console.log("blog");
   blogs.unshift(blog);
-  
 
   console.log("blogs", blogs);
+
+  renderBlog();
 }
 
 function renderBlog() {
@@ -39,7 +49,7 @@ function renderBlog() {
      html += `
         <div class="blog-list-item">
             <div class="blog-image">
-                <img src="${blogs[index].image}" alt="" />
+                <img src="${blogs[index].image}" alt="" style="width:100%; height:auto;" />
             </div>
             <div class="blog-content">
                 <div class="btn-group">
@@ -55,25 +65,24 @@ function renderBlog() {
                 <p style="width: 100%;">
                   ${blogs[index].description}
                 </p>
-                <p style="width: 100%;"> ${blogs[index].technologies}</p>
+                <p style="width: 100%;">Technologies: ${blogs[index].technologies}</p>
 
                 <div> 
                     <p style="width:100%">${getDistanceTime(blogs[index].createdAt)}</p>
                 </div>
                 <div>
-                <p style="width: 100%">Waktu Postingan Dibuat : ${blogs[index].startDate}</p>
-                <p style="width: 100%">Waktu Habis Postingan : ${blogs[index].endDate} </p>
+                <p style="width: 100%">Waktu Postingan Dibuat: ${blogs[index].startDate}</p>
+                <p style="width: 100%">Waktu Habis Postingan: ${blogs[index].endDate}</p>
                 <div/>
             </div>
         </div>
-`;
+    `;
   }
 
   document.getElementById("contents").innerHTML = html;
 }
 
 function getFullTime(dates) {
-
   let minutes = dates.getMinutes();
   let hours = dates.getHours();
   const date = dates.getDate();
@@ -107,9 +116,7 @@ function getFullTime(dates) {
 }
 
 function getDistanceTime(timePost) {
-  
   let timeNow = new Date();
-
   let distance = timeNow - timePost; 
 
   const seconds = Math.floor(distance / 1000);
@@ -121,10 +128,10 @@ function getDistanceTime(timePost) {
     return seconds + " seconds ago";
   } else if (minutes < 60) {
     return minutes + " minutes ago";
-  } else if (hours < 60) {
+  } else if (hours < 24) {
     return hours + " hours ago";
-  } else if (day < 24) {
-    return day + " day ago";
+  } else {
+    return day + " days ago";
   }
 }
 
@@ -133,28 +140,3 @@ renderBlog();
 setInterval(() => {
   renderBlog();
 }, 1000);
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   // Ambil elemen Start Date dan End Date
-//   const startDateInput = document.getElementById("startDate");
-//   const endDateInput = document.getElementById("endDate");
-
-//   // Dapatkan tanggal hari ini
-//   const today = new Date();
-
-//   // Format tanggal hari ini menjadi yyyy-mm-dd
-//   const formattedStartDate = today.toISOString().split('T')[0];
-
-//   // Set nilai Start Date dengan tanggal hari ini
-//   startDateInput.value = formattedStartDate;
-
-//   // Tambahkan 30 hari ke tanggal hari ini untuk End Date
-//   const futureDate = new Date(today);
-//   futureDate.setDate(futureDate.getDate() + 30);
-
-//   // Format tanggal End Date
-//   const formattedEndDate = futureDate.toISOString().split('T')[0];
-
-//   // Set nilai End Date dengan tanggal 30 hari setelah Start Date
-//   endDateInput.value = formattedEndDate;
-// });
