@@ -4,90 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./assets/logo/css/style.css">
-    <link rel="stylesheet" href="./assets/logo/css/nav.css">
-    <link rel="stylesheet" href="./assets/logo/css/blog.css">
     <style>
         *, body {
-            margin: 0;
+            margin : 0;
+        } 
+        .hamburger-menu {
+            display: none;
+        }
+        .active {
+            display: block;
         }
     </style>
-</head>
-<body>
-    <nav>
-        <ul
-          class="nav-container"
-        >
+    <link rel="stylesheet" href="../assets/logo/css/nav.css">
+    <link rel="stylesheet" href="../assets/logo/css/blog.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navbar-ul">
+        <div class="navbar-left">
           <li>
-            <img src="./assets/logo/—Pngtree—cool red wings logo_7129340.png"
-            class="nav-logo"
-            />
+          <img src="../assets/logo/—Pngtree—cool red wings logo_7129340.png"
+          class="navbar-logo" />
+        </li>
+       <li>
+            <a href="/" class="navbar-link active"> Home </a>
           </li>
-          <li><a href="/" class="nav-link">Home</a></li>
-          <li><a href="/blog" class="nav-link">Blog </a></li>
-          <li><a href="/testimonial" class="nav-link"> Testimonial</a></li>
-          <li class="nav-right">
-            <a
-              href="contact.html"
-              class="nav-contact-button"
-              >Contact Me</a
-            >
+          <li>
+            <a href="/blog" class="navbar-link"> Blog </a>
           </li>
-        </ul>
+          <li>
+            <a href="/testimonial" class="navbar-link"> Testimonial </a>
+          </li>
+        </div>
+        <div class="navbar-right">
+          <li>
+            <a href="/contact" class="navbar-contact-btn"> Contact </a>
+          </li>
+          <button id="hamburger-button" onclick="toggleHamburger()">
+            <i class="fa-solid fa-bars fa-2x"></i>
+          </button>
+        </div>
+      </ul>
     </nav>
+    <div class="hamburger-container hide">
+      <a href="index" class="hamburger-nav-link hamburger-active">
+        Home
+      </a>
+      <a href="blog" class="hamburger-nav-link"> Blog </a>
+      <a href="testimonial" class="hamburger-nav-link"> Testimonial </a>
+      <a href="contact" class="hamburger-nav-link"> Contact </a>
+    </div>
+
     <div class="blog">
       <div class="blog-form">
         <div class="form-container">
-          <form onsubmit="addBlog(event)">
+          <form action="/add-blog" method="post">
             <h1>Add My Project</h1>
             <div>
-              <label for="input-blog-project">Project Name</label>
-              <input id="input-blog-project" />
+              <label for="projectName">Project Name</label>
+              <input name="projectName"/>
             </div>
             <div>
               <label for="startDate">Start Date</label>
-              <input type="date" id="startDate">
+              <input type="date" name="startDate">
             </div>
             <label for="endDate">End Date</label>
-            <input type="date" id="endDate">
+            <input type="date" name="endDate">
             <div>
-              <label for="input-blog-content">Description</label>
-              <textarea id="input-blog-description"></textarea>
-            </div>
-            <div>
-              <h3>Technologies</h3>
-              <input type="checkbox" id="nodejs" name="technologies" value="Node Js">
-              <label for="nodejs"> Node Js</label><br>
-              <input type="checkbox" id="reactjs" name="technologies" value="React Js">
-              <label for="reactjs"> React Js</label><br>
-              <input type="checkbox" id="nextjs" name="technologies" value="Next Js">
-              <label for="nextjs"> Next Js</label><br>
-              <input type="checkbox" id="typescript" name="technologies" value="TypeScript">
-              <label for="typescript"> TypeScript</label><br><br>
-        
+              <label for="content">Description</label>
+              <textarea name="content"></textarea>
             </div>
             <div>
-              <label>Upload Image</label>
-              <div class="input-blog-image-group">
-                <label for="input-blog-image">
-                  <p>Attach File</p>
-                  <i class="fa-solid fa-file"></i>
-                </label>
-                <input type="file" id="input-blog-image" hidden />
-              </div>
-            </div>
-            <div class="button-group">
-              <button>Post Blog</button>
-            </div>
-          </form>
+              <label for="technologies">Technologies</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="technologies" name="technologies" value="Node Js"> Node Js</label>
+            <label><input type="checkbox" id="technologies" name="technologies" value="React Js"> React Js</label>
+            <label><input type="checkbox" id="technologies" name="technologies" value="Next Js"> Next Js</label>
+            <label><input type="checkbox" id="technologies" name="technologies" value="TypeScript"> TypeScript</label>
         </div>
+            </div>
+            <form action="/add-blog" method="POST" enctype="multipart/form-data">
+    <div>
+      <label>Upload Image</label>
+      <div class="image">
+       <label for="image">
+        <p>Attach File</p>
+        <i class="fa-solid fa-file"></i>
+       </label>
+       <input type="file" id="image" name="image" />
       </div>
+     </div>
+  <div class="button-group">
+    <button type="submit">Post Blog</button>
+  </div>
+</form>
 
       <hr class="line" />
-      <div id="contents" class="blog-list">
+      <div name="contents" class="blog-list">
       </div>
     </div>
     <script src="./assets/logo/js/blog.js"></script>
+    <script src="../assets/logo/js/nav.js"></script>
   </body>
 </html>
 

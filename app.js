@@ -1,4 +1,5 @@
 const express = require("express")
+const multer = require('multer');
 const app = express()
 const port = 3000
 const path = require("path")
@@ -7,26 +8,93 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./views"))
 app.use("/assets", express.static(path.join(__dirname, "assets")))
 
-// ROUTING
-app.get('/', (req, res) => {
-  res.render("index")
-})
+app.use(express.urlencoded({extended: true}));
 
-app.get('/blog', (req, res) => {
-  res.render("blog")
+// ROUTINg
+
+const blogs = [];
+
+// Middleware untuk parsing body request
+app.use(express.urlencoded({ extended: true }));
+
+// Konfigurasi Multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads'); // Folder tempat menyimpan file
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Nama file unik
+  }
 });
 
-app.get('/contact', (req, res) => {
-  res.render("contact")
-});
+const upload = multer({ storage: storage });
 
-app.get('/testimonial', (req, res) => {
-  res.render("testimonial")
-});
+// Route untuk menangani halaman utama
+app.get('/', home);
+app.get('/blog', blog);
+app.get('/contact', contact);
+app.get('/testimonial', testimonial);
+app.get('/add-blog', addBlogView);
 
-app.get('/add-blog', (req, res) => {
-  res.render("add-blog")
-});
+// Route untuk menangani form submission dan upload gambar
+app.post('/add-blog', upload.single('image'), addBlog);
+
+// Fungsi untuk merender halaman utama
+function home(req, res) {
+  res.render('index');
+};
+
+// Fungsi untuk merender halaman blog
+function blog(req, res){
+  res.render("blog", { blogs });
+}
+
+// Fungsi untuk merender halaman kontak
+function contact(req, res) {
+  res.render('contact');
+};
+
+// Fungsi untuk merender halaman testimonial
+function testimonial(req, res) {
+  res.render('testimonial');
+};
+
+// Fungsi untuk menampilkan form tambah blog
+function addBlogView(req, res) {
+  res.render('add-blog');
+};
+
+// Fungsi untuk menambah blog baru
+function addBlog(req, res) {
+  const { projectName, startDate, endDate, content, technologies } = req.body;
+  const image = req.file ? req.file.filename : null; // Nama file gambar yang diupload
+
+  const newBlog = {
+    projectName,
+    startDate,
+    endDate,
+    content,
+    technologies,
+    image,
+    createdAt: new Date(),
+  };
+
+  blogs.unshift(newBlog); // Tambah blog ke array blogs
+
+  console.log('Blogs:', blogs);
+  res.redirect('/blog'); // Redirect setelah berhasil upload
+};
+
+function blogDetail(req, res) {
+  const blogId = req.params.id; // Jika ingin pakai ID untuk detail blog
+  const blog = blogs.find((b, index) => index === parseInt(blogId)); // Ambil blog berdasarkan index
+  if (blog) {
+    res.render("blog-detail", { blog });
+  } else {
+    res.status(404).send("Blog not found");
+  }
+}
+
 
 // app.get('/about', (req, res) => {
 //   res.send("Ini halaman tentang saya")
